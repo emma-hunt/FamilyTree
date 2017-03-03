@@ -1,0 +1,57 @@
+drop if exists user;
+create table if not exists user
+(
+    username text not null primary key,
+    password text not null,
+    email text not null,
+    first_name text not null,
+    last_name text not null,
+    gender text not null,
+    person_id text not null,
+    constraint ck_gender check (gender in ('m', 'f')),
+    foreign key(person_id) references person(person_id)
+);
+
+drop if exists person;
+create table if not exists person
+(
+    person_id text not null primary key,
+    descendant text not null,
+    first_name text not null,
+    last_name text not null,
+    gender text not null,
+    father text,
+    mother text,
+    spouse text,
+    foreign key(descendant) references user(username),
+    foreign key(father) references person(person_id),
+    foreign key(mother) references person(person_id),
+    foreign key(spouse) references person(person_id),
+    constraint ck_gender check (gender in ('m', 'f'))
+);
+
+drop if exists event;
+create table if not exists event
+(
+    event_id text not null primary key,
+    descendant text not null,
+    person text not null,
+    latitude decimal not null,
+    longitude decimal not null,
+    country text not null,
+    city text not null,
+    event_type text not null,
+    year integer not null,
+    foreign key(person) references person(person_id),
+    foreign key(descendant) references user(username),
+    constraint ck_event_type check (event_type in ('Birth', 'Baptism', 'Christening', 'Marriage', 'Death'))
+);
+
+drop if exists auth_token;
+create table if not exists auth_token
+(
+    auth_code text not null primary key,
+    auth_user text not null,
+    time_stamp text not null,
+    foreign key(auth_user) references user(username)
+);
