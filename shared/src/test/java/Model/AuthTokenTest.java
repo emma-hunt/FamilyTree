@@ -23,7 +23,6 @@ public class AuthTokenTest {
         date = cal.getTime();
         legal = new AuthToken("hi390sj", "emma", date);
         empty = new AuthToken(null, null, null);
-        //badDate = new AuthToken("bad", "date");
     }
 
     @Test

@@ -12,10 +12,10 @@ import java.sql.SQLException;
 public class DatabaseDao {
     //responsible for getting database and creating dao's
     protected Connection connection;
-    protected UserDao userAccessor;
-    protected PersonDao personAccessor;
+    public UserDao userAccessor;
+    public PersonDao personAccessor;
     public EventDao eventAccessor;
-    protected AuthTokenDao authTokenAccessor;
+    public AuthTokenDao authTokenAccessor;
 
     /**
      * database dao constructor, creates connection and table daos

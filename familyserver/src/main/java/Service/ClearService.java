@@ -1,5 +1,6 @@
 package Service;
 
+import DataAccess.DatabaseDao;
 import RequestResult.ClearResult;
 
 /**
@@ -13,6 +14,19 @@ public class ClearService {
      * @return clear result
      */
     public ClearResult clear(){
-        return null;
+        ClearResult result = null;
+        DatabaseDao db = new DatabaseDao();
+        boolean success = db.clearDatabase();
+        db.closeConnection(success);
+        if(success) {
+            result = new ClearResult();
+            result.setMessage("Clear succeeded.");
+        }
+        else {
+            result = new ClearResult();
+            result.setMessage("Error: Clear failed.");
+        }
+        //db.closeConnection(success);
+        return result;
     }
 }

@@ -1,5 +1,10 @@
 package Service;
 
+import java.util.UUID;
+
+import DataAccess.DatabaseDao;
+import Model.AuthToken;
+import Model.User;
 import RequestResult.RegisterRequest;
 import RequestResult.RegisterResult;
 
@@ -16,8 +21,42 @@ public class RegisterService {
      * @return register result
      */
     public RegisterResult register(RegisterRequest r){
-        //todo remember to create a person for each user in the same transaction
-        return null;
+        RegisterResult result = null;
+        boolean success = false;
+        DatabaseDao db = new DatabaseDao();
+        //check to see if user exists
+        if(db.userAccessor.read(r.getUsername()) == null) {
+            success = true;
+            //create new user
+            User user = new User(r.getUsername(), r.getPassword(), r.getEmail(), r.getFirstname(), r.getLastname(), r.getGender().charAt(0), createID());
+            success = success && db.userAccessor.createUser(user);
+            //generate fake data
+            FillService fill = new FillService();
+            success = success && fill.generate(db, user, 4);
+            //login new user
+            LoginService login = new LoginService();
+            AuthToken auth = login.createAuthToken(user.getUserName());
+            success = success && db.authTokenAccessor.insertAuthToken(auth);
+            if(success){
+                result = new RegisterResult(auth.getAuth_code(), user.getUserName(), user.getPersonID());
+            }
+            else {
+                result = new RegisterResult("Invalid register information. Please Try Again.");
+            }
+        }
+        else {
+            success = false;
+            result = new RegisterResult("Invalid register information. Please Try Again.");
+        }
+        db.closeConnection(success);
+        //db.closeConnection(true);
+        return result;
     }
 
+
+    private String createID() {
+        UUID uuid = UUID.randomUUID();
+        String id = uuid.toString();
+        return id;
+    }
 }

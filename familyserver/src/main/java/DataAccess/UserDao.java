@@ -28,21 +28,21 @@ public class UserDao {
     public boolean createUser(User u){
         //create a new matching person
         try {
-            Statement stat = connection.createStatement();
+            //Statement stat = connection.createStatement();
             PreparedStatement prep = connection.prepareStatement("insert into user values (?, ?, ?, ?, ?, ?, ?);");
-            prep.setString(1, u.getUsername());
+            prep.setString(1, u.getUserName());
             prep.setString(2, u.getPassword());
             prep.setString(3, u.getEmail());
-            prep.setString(4, u.getFirst_name());
-            prep.setString(5, u.getLast_name());
+            prep.setString(4, u.getFirstName());
+            prep.setString(5, u.getLastName());
             prep.setString(6, String.valueOf(u.getGender()));
-            prep.setString(7, u.getPerson_id());
+            prep.setString(7, u.getPersonID());
+            //System.out.println("i get here");
             prep.executeUpdate(); // changed from execute to execute update
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
-        //todo remember to add matching person in same transaction
         return true;
     }
 
@@ -99,10 +99,10 @@ public class UserDao {
             PreparedStatement prep = connection.prepareStatement("update user set password = ?, email = ?, first_name = ?, last_name = ?, gender = ? where username = ?");
             prep.setString(1, u.getPassword());
             prep.setString(2, u.getEmail());
-            prep.setString(3, u.getFirst_name());
-            prep.setString(4, u.getLast_name());
+            prep.setString(3, u.getFirstName());
+            prep.setString(4, u.getLastName());
             prep.setString(5, String.valueOf(u.getGender()));
-            prep.setString(6, u.getUsername());
+            prep.setString(6, u.getUserName());
             //prep.addBatch();
             //prep.executeBatch();
             prep.executeUpdate();

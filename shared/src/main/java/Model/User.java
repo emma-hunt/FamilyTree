@@ -9,24 +9,24 @@ package Model;
  */
 
 public class User {
-    /** string containing the unique username */
-    private String username;
+    /** string containing the unique userName */
+    private String userName;
     /** string containing the password */
     private String password;
     /** String containing the user's email */
     private String email;
     /** String containing the user's first name */
-    private String first_name;
+    private String firstName;
     /** String containing the user's last name */
-    private String last_name;
+    private String lastName;
     /** char containing the person's gender, must be m or f */
     private char gender;
     /** string containing the person id for the user's corresponding person */
-    private String person_id;
+    private String personID;
 
     /**
      * constructor for the user class
-     * @param un    username
+     * @param un    userName
      * @param pw    password
      * @param em    email
      * @param fn    first name
@@ -35,21 +35,21 @@ public class User {
      * @param per   person id
      */
     public User(String un, String pw, String em, String fn, String ln, char g, String per) {
-        username = un;
+        userName = un;
         password = pw;
         email = em;
-        first_name = fn;
-        last_name = ln;
+        firstName = fn;
+        lastName = ln;
         gender = g;
-        person_id = per;
+        personID = per;
     }
 
     /**
-     * gets username
-     * @return username
+     * gets userName
+     * @return userName
      */
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
     /**
@@ -68,18 +68,18 @@ public class User {
 
     /**
      * gets first name
-     * @return first_name
+     * @return firstName
      */
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
     /**
      * gets last name
-     * @return last_name
+     * @return lastName
      */
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
     /**
@@ -92,10 +92,10 @@ public class User {
 
     /**
      * gets person id
-     * @return person_id
+     * @return personID
      */
-    public String getPerson_id() {
-        return person_id;
+    public String getPersonID() {
+        return personID;
     }
 
     /**
@@ -103,7 +103,7 @@ public class User {
      * @return boolean
      */
     public boolean isValidUser() {
-        if(username == null || password == null || email == null || first_name == null || last_name == null || person_id == null){
+        if(userName == null || password == null || email == null || firstName == null || lastName == null || personID == null){
             return false;
         }
         if(gender != 'm' || gender != 'f') {
@@ -127,7 +127,7 @@ public class User {
             return false;
         }
         User that = (User) o;
-        if(!this.getUsername().equals(that.getUsername())){
+        if(!this.getUserName().equals(that.getUserName())){
             return false;
         }
         if(!this.getPassword().equals(that.getPassword())){
@@ -136,16 +136,16 @@ public class User {
         if(!this.getEmail().equals(that.getEmail())){
             return false;
         }
-        if(!this.getFirst_name().equals(that.getFirst_name())){
+        if(!this.getFirstName().equals(that.getFirstName())){
             return false;
         }
-        if(!this.getLast_name().equals(that.getLast_name())){
+        if(!this.getLastName().equals(that.getLastName())){
             return false;
         }
         if(this.getGender() != that.getGender()){
             return false;
         }
-        if(!this.getPerson_id().equals(that.getPerson_id())){
+        if(!this.getPersonID().equals(that.getPersonID())){
             return false;
         }
         return true;

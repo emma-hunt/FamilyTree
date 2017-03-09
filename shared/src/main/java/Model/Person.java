@@ -10,13 +10,13 @@ package Model;
 
 public class Person {
     /** String containing the unique person id */
-    private String person_id;
+    private String personID;
     /** String containing the username of the user to which this person is related */
     private String descendant;
     /** String containing the person's first name */
-    private String first_name;
+    private String firstName;
     /** String containing the person's last name */
-    private String last_name;
+    private String lastName;
     /** char containing the person's gender, must be m of f */
     private char gender;
     /** String containing the person id of the father, if they exist */
@@ -30,23 +30,68 @@ public class Person {
      * Constructor for the person class
      * @param person_id
      * @param descendant
-     * @param first_name
-     * @param last_name
+     * @param firstName
+     * @param lastName
      * @param gender
      * @param father
      * @param mother
      * @param spouse
      */
-    public Person(String person_id, String descendant, String first_name, String last_name, char gender, String father, String mother, String spouse) {
-        this.person_id = person_id;
+    public Person(String person_id, String descendant, String firstName, String lastName, char gender, String father, String mother, String spouse) {
+        this.personID = person_id;
         this.descendant = descendant;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.gender = gender;
         this.father = father;
         this.mother = mother;
         this.spouse = spouse;
     }
+
+    public Person(String person_id, String descendant, String firstName, String lastName, char gender, String father, String mother) {
+        this.personID = person_id;
+        this.descendant = descendant;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.father = father;
+        this.mother = mother;
+        this.spouse = null;
+    }
+
+    public void setPersonID(String personID) {
+        this.personID = personID;
+    }
+
+    public void setDescendant(String descendant) {
+        this.descendant = descendant;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
+    public void setFather(String father) {
+        this.father = father;
+    }
+
+    public void setMother(String mother) {
+        this.mother = mother;
+    }
+
+    public void setSpouse(String spouse) {
+        this.spouse = spouse;
+    }
+
+    public Person() {}
 
     /**
      * determines whether a person is an ancestor of a user
@@ -58,10 +103,10 @@ public class Person {
     }
     /**
      * returns the id of the person
-     * @return person_id
+     * @return personID
      */
-    public String getPerson_id() {
-        return person_id;
+    public String getPersonID() {
+        return personID;
     }
 
     /**
@@ -74,18 +119,18 @@ public class Person {
 
     /**
      * returns the first name of the person
-     * @return first_name
+     * @return firstName
      */
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
     /**
      * returns the last name of the person
-     * @return last_name
+     * @return lastName
      */
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
     /**
@@ -135,16 +180,16 @@ public class Person {
             return false;
         }
         Person that = (Person) o;
-        if(!this.getPerson_id().equals(that.getPerson_id())){
+        if(!this.getPersonID().equals(that.getPersonID())){
             return false;
         }
         if(!this.getDescendant().equals(that.getDescendant())){
             return false;
         }
-        if(!this.getFirst_name().equals(that.getFirst_name())){
+        if(!this.getFirstName().equals(that.getFirstName())){
             return false;
         }
-        if(!this.getLast_name().equals(that.getLast_name())){
+        if(!this.getLastName().equals(that.getLastName())){
             return false;
         }
         if(this.getGender() != that.getGender()){

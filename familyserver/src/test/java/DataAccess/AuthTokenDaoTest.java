@@ -78,15 +78,6 @@ public class AuthTokenDaoTest {
         assertEquals(null, authTokenDao.checkAuthToken("weston"));
     }
 
-    /*@Test
-    public void read() throws Exception {
-        insertAuthToken();
-        assertEquals(basic, authTokenDao.read("code"));
-        assertEquals(null, authTokenDao.read("blaze"));
-        assertEquals(repeatedUser, authTokenDao.read("hello"));
-        assertEquals(outOfTime, authTokenDao.read("weston"));
-    }*/
-
     @Test
     public void delete() throws Exception {
         insertAuthToken();

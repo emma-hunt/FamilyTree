@@ -97,13 +97,13 @@
             function login()
             {
                 document.getElementById("handleBox").value = "/user/login";
-                document.getElementById("requestBox").value = formatJson("{username:\"username\",password:\"password\"}");
+                document.getElementById("requestBox").value = formatJson("{\"userName\":\"userName\",\"password\":\"password\"}");
             }
             function register()
             {
                 document.getElementById("handleBox").value = "/user/register";
-                document.getElementById("requestBox").value = formatJson("{username:\"username\",password:\"password\"," +
-                    "email:\"email\",firstname:\"firstname\",lastname:\"lastname\", gender:\"m/f\"}");
+                document.getElementById("requestBox").value = formatJson("{\"userName:\"userName\",\"password\":\"password\"," +
+                    "\"email\":\"email\",\"firstName\":\"firstname\",\"lastName\":\"lastname\", \"gender\":\"m/f\"}");
             }
             function clear()
             {
@@ -176,13 +176,13 @@
                         No authorization token is required.
                     </li>
                     <li>
-                        <a href="javascript:fill()" >/fill/[username]</a> This API will fill the server&apos;s database with fake data for the specified user name.
-                        The "username" parameter is required and must be a user already registered with the server. It can be any user name you choose.
+                        <a href="javascript:fill()" >/fill/[userName]</a> This API will fill the server&apos;s database with fake data for the specified user name.
+                        The "userName" parameter is required and must be a user already registered with the server. It can be any user name you choose.
                         If there is any data in the database associated with the given user name, it is erased.
                         This API can be run from a browser by simply typing it in the address bar (or by pressing the link, filling in the details, and clicking submit).
                         No authorization token is required.</li>
-                    <li><a href="javascript:fill(true)" >/fill/[username]/{generations}</a> This API will fill the server&apos;s database with fake data for the specified user name.
-                        The "username" parameter is required and must be a user already registered with the server. It can be any user name you choose.
+                    <li><a href="javascript:fill(true)" >/fill/[userName]/{generations}</a> This API will fill the server&apos;s database with fake data for the specified user name.
+                        The "userName" parameter is required and must be a user already registered with the server. It can be any user name you choose.
                         If there is any data in the database associated with the given user name, it is erased.
                         This API can be run from a browser by simply typing it in the address bar (or by pressing the link, filling in the details, and clicking submit).
                         No authorization token is required.</li>
@@ -196,9 +196,9 @@
                   <h1 style="padding-left:1cm; text-decoration: underline;">User Commands</h1>
                 <ul>
                   <li>
-                      <a href="javascript:login()" >/user/login</a> Use this to log in a user. A request body must be supplied specifying the username and password.
+                      <a href="javascript:login()" >/user/login</a> Use this to log in a user. A request body must be supplied specifying the userName and password.
                       If login succeeds, an authorization token will be returned. Use this token on other API calls that require authorization. The returned JSON object contains
-                      "Authorization" (the authorization token) and "username" (the username that was just logged in).
+                      "Authorization" (the authorization token) and "userName" (the userName that was just logged in).
                   </li>
                   <li>
                       <a href="javascript:register()" >/user/register</a> Use this to register a user. An authorization token is returned. Use it just as you would a

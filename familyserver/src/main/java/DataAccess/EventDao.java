@@ -29,14 +29,14 @@ public class EventDao {
         try {
             Statement stat = connection.createStatement();
             PreparedStatement prep = connection.prepareStatement("insert into event values (?, ?, ?, ?, ?, ?, ?, ?, ?);");
-            prep.setString(1, ev.getEvent_id());
+            prep.setString(1, ev.getEventID());
             prep.setString(2, ev.getDescendant());
-            prep.setString(3, ev.getPerson());
+            prep.setString(3, ev.getPersonID());
             prep.setString(4, String.valueOf(ev.getLatitude()));
             prep.setString(5, String.valueOf(ev.getLongitude()));
             prep.setString(6, ev.getCountry());
             prep.setString(7, ev.getCity());
-            prep.setString(8, ev.getEvent_type());
+            prep.setString(8, ev.getEventType());
             prep.setString(9, String.valueOf(ev.getYear()));
             prep.executeUpdate();
         } catch (SQLException e) {
@@ -100,14 +100,14 @@ public class EventDao {
             Statement stat = connection.createStatement();
             PreparedStatement prep = connection.prepareStatement("update event set descendant = ?, person = ?, latitude = ?, longitude = ?, country = ?, city = ?, event_type = ?, year = ? where event_id = ?");
             prep.setString(1, ev.getDescendant());
-            prep.setString(2, ev.getPerson());
+            prep.setString(2, ev.getPersonID());
             prep.setString(3, String.valueOf(ev.getLatitude()));
             prep.setString(4, String.valueOf(ev.getLongitude()));
             prep.setString(5, ev.getCountry());
             prep.setString(6, ev.getCity());
-            prep.setString(7, ev.getEvent_type());
+            prep.setString(7, ev.getEventType());
             prep.setString(8, String.valueOf(ev.getYear()));
-            prep.setString(9, ev.getEvent_id());
+            prep.setString(9, ev.getEventID());
             //prep.addBatch();
             //prep.executeBatch();
             prep.executeUpdate();
@@ -232,7 +232,7 @@ public class EventDao {
     protected static boolean initializeEvent(Connection connection) {
         try{
             Statement stat = connection.createStatement();
-            stat.executeUpdate("drop table if exists event;");
+            //stat.executeUpdate("drop table if exists event;");
             stat.executeUpdate("create table if not exists event(" +
                     " event_id text not null primary key," +
                     " descendant text not null," +

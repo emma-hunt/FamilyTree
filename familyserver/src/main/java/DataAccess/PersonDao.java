@@ -30,10 +30,10 @@ public class PersonDao {
         try {
             Statement stat = connection.createStatement();
             PreparedStatement prep = connection.prepareStatement("insert into person values (?, ?, ?, ?, ?, ?, ?, ?);");
-            prep.setString(1, p.getPerson_id());
+            prep.setString(1, p.getPersonID());
             prep.setString(2, p.getDescendant());
-            prep.setString(3, p.getFirst_name());
-            prep.setString(4, p.getLast_name());
+            prep.setString(3, p.getFirstName());
+            prep.setString(4, p.getLastName());
             prep.setString(5, String.valueOf(p.getGender()));
             prep.setString(6, p.getFather());
             prep.setString(7, p.getMother());
@@ -99,13 +99,13 @@ public class PersonDao {
             Statement stat = connection.createStatement();
             PreparedStatement prep = connection.prepareStatement("update person set descendant = ?, first_name = ?, last_name = ?, gender = ?, father = ?, mother = ?, spouse = ? where person_id = ?");
             prep.setString(1, p.getDescendant());
-            prep.setString(2, p.getFirst_name());
-            prep.setString(3, p.getLast_name());
+            prep.setString(2, p.getFirstName());
+            prep.setString(3, p.getLastName());
             prep.setString(4, String.valueOf(p.getGender()));
             prep.setString(5, p.getFather());
             prep.setString(6, p.getMother());
             prep.setString(7, p.getSpouse());
-            prep.setString(8, p.getPerson_id());
+            prep.setString(8, p.getPersonID());
             //prep.addBatch();
             //prep.executeBatch();
             prep.executeUpdate();
@@ -231,7 +231,7 @@ public class PersonDao {
     protected static boolean initializePerson(Connection connection) {
         try{
             Statement stat = connection.createStatement();
-            stat.executeUpdate("drop table if exists person;");
+            //stat.executeUpdate("drop table if exists person;");
             stat.executeUpdate("create table if not exists person(" +
                     " person_id text not null primary key," +
                     " descendant text not null," +

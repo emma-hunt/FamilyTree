@@ -27,18 +27,14 @@ public class Server {
      * main function for server
      */
     public static void main(String args[]) {
-        //call databaseDao.initalize()
-        // new Server.run();
-
-        new Server().run();
-
+        new Server().run(args[0]);
     }
-    private void run() {
+    private void run(String port) {
         //this is where you create the server
         DatabaseDao.initialize();
 
         try {
-            server = HttpServer.create(new InetSocketAddress(8080),10);
+            server = HttpServer.create(new InetSocketAddress(Integer.parseInt(port)),10);
         } catch (IOException e) {
             e.printStackTrace();
             return;
