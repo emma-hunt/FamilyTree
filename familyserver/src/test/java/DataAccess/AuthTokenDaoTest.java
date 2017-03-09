@@ -80,7 +80,13 @@ public class AuthTokenDaoTest {
 
     @Test
     public void delete() throws Exception {
-        insertAuthToken();
+//        insertAuthToken();
+        assertTrue(authTokenDao.insertAuthToken(basic));
+        assertTrue(authTokenDao.insertAuthToken(repeatedUser));
+        assertTrue(authTokenDao.insertAuthToken(outOfTime));
+        assertFalse(authTokenDao.insertAuthToken(nullKey));
+        //assertFalse(authTokenDao.insertAuthToken(badTime));
+        assertFalse(authTokenDao.insertAuthToken(repeatedCode));
         assertTrue(authTokenDao.delete("code"));
         assertEquals(null, authTokenDao.checkAuthToken("code"));
     }

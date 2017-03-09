@@ -244,8 +244,8 @@ public class EventDao {
                     " event_type text not null," +
                     " year integer not null," +
                     " foreign key(person) references person(person_id)," +
-                    " foreign key(descendant) references user(username)," +
-                    " constraint ck_event_type check (event_type in ('Birth', 'Baptism', 'Christening', 'Marriage', 'Death')));");
+                    " foreign key(descendant) references user(username)" +
+                    ");");
             return true;
         }catch(SQLException sqlException) {
             System.err.println("Could NOT initialize user");

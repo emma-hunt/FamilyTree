@@ -1,5 +1,6 @@
 package DataAccess;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,10 +21,17 @@ public class DatabaseDaoTest {
         assertTrue(success);
     }
 
+//    @After
+//    public void tearDown() throws Exception {
+//        db.closeConnection(false);
+//
+//    }
+
     @Test
     public void getConnection() throws Exception {
         Connection conn = db.getConnection();
         assertNotEquals(null, conn);
+        db.closeConnection(false);
     }
 
     /*@Test
@@ -42,6 +50,7 @@ public class DatabaseDaoTest {
     public void clearDatabase() throws Exception {
         boolean success = db.clearDatabase();
         assertTrue(success);
+        db.closeConnection(false);
     }
 
 }

@@ -1,19 +1,15 @@
 package DataAccess;
 
-import com.sun.org.apache.bcel.internal.generic.ATHROW;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 import Model.AuthToken;
-import sun.java2d.pipe.SpanShapeRenderer;
 
 /**
  * Created by emmag on 2/10/2017.
@@ -160,50 +156,6 @@ public class AuthTokenDao {
         }
         return success;
     }
-
-
-    /**
-     * reads given authCode from table and returns authToken object
-     * @return  AuthToken object containing information
-     */
-    /*
-    public AuthToken read(String authCode) {
-        AuthToken a = null;
-        PreparedStatement prep = null;
-        ResultSet rs = null;
-        try {
-            prep = connection.prepareStatement("select * from auth_code where auth_code = ?");
-            prep.setString(1, authCode);
-            //prep.addBatch();
-            //connection.setAutoCommit(true);
-            rs = prep.executeQuery();
-            //connection.setAutoCommit(false);
-            //stmt = connection.prepareStatement(sql);
-            //rs = stmt.executeQuery();
-            while (rs.next()) {
-                String code = rs.getString(1);
-                String user = rs.getString(2);
-                String time = rs.getString(3);
-                Date time_stamp = a.sdf.parse(time);
-                a = new AuthToken(authCode, user, time_stamp);
-            }
-        }
-        catch (SQLException e) {
-            // ERROR
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (prep != null) prep.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return a;
-    }
-    */
 
 
     /**

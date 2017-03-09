@@ -1,7 +1,5 @@
 package TestDriver;
 
-import Model.AuthTokenTest;
-import ServerProxy.ServerProxyTest;
 
 
 /**
@@ -11,7 +9,7 @@ import ServerProxy.ServerProxyTest;
 public class TestDriver {
     public static void main(String args[]) {
         org.junit.runner.JUnitCore.main(
-                "Model.AuthTokenTest",
+//                "Model.AuthTokenTest",
                 "DataAccess.DatabaseDaoTest",
                 "DataAccess.AuthTokenDaoTest",
                 "DataAccess.UserDaoTest",

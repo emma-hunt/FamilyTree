@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FamilyMapServer.iml" filepath="$PROJECT_DIR$/FamilyMapServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CS240.iml" filepath="$PROJECT_DIR$/CS240.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/client/client.iml" filepath="$PROJECT_DIR$/client/client.iml" />
       <module fileurl="file://$PROJECT_DIR$/familyserver/familyserver.iml" filepath="$PROJECT_DIR$/familyserver/familyserver.iml" />

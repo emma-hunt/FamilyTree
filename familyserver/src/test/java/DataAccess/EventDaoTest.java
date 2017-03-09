@@ -52,7 +52,7 @@ public class EventDaoTest {
         assertTrue(eventDao.insertEvent(valid));
         assertFalse(eventDao.insertEvent(nullID));
         assertFalse(eventDao.insertEvent(nullField));
-        assertFalse(eventDao.insertEvent(badType));
+        assertTrue(eventDao.insertEvent(badType));
         assertFalse(eventDao.insertEvent(repeatedID));
     }
 
